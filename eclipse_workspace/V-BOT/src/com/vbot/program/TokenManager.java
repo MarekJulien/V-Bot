@@ -24,6 +24,7 @@ public class TokenManager {
 		// Read token from file
 		String token = scanner.nextLine();
 		
+		// Return token
 		return token;
 		
 	}

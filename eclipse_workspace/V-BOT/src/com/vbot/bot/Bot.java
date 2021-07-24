@@ -2,6 +2,7 @@ package com.vbot.bot;
 
 import javax.security.auth.login.LoginException;
 
+import com.vbot.listener.MessageListener;
 import com.vbot.program.TokenManager;
 
 import net.dv8tion.jda.api.JDABuilder;
@@ -16,7 +17,7 @@ public class Bot {
 
 		builder = JDABuilder.createDefault(null);
 
-		// Get Token
+		// Get token
 		final String TOKEN = TokenManager.getToken();
 
 		// Setup
@@ -24,6 +25,10 @@ public class Bot {
 		builder.setStatus(OnlineStatus.ONLINE);
 		builder.setActivity(Activity.listening("to users"));
 
+		// Add event listener
+		builder.addEventListeners(new MessageListener());
+		
+		// Build bot
 		builder.build();
 
 	}
