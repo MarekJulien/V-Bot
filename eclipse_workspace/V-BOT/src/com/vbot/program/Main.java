@@ -1,10 +1,20 @@
 package com.vbot.program;
 
+import javax.security.auth.login.LoginException;
+
+import com.vbot.bot.Bot;
+
 public class Main {
 	
 	public static void main(String[] args) {
-
-		final String TOKEN = TokenManager.getToken();
+		
+		// Create Bot
+		try {
+			Bot.create();
+		} catch (LoginException e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 
