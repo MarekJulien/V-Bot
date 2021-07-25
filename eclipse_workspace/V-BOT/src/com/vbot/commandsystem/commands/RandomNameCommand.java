@@ -22,7 +22,7 @@ public class RandomNameCommand implements Command{
 			String newName = getRandomName();
 			
 			// Rename member
-			member.modifyNickname(newName);
+			member.modifyNickname(newName).queue();
 			
 			// Print message
 			channel.sendMessage(member.getAsMention() + ", du heißt jetzt " + newName + "!").queue();
