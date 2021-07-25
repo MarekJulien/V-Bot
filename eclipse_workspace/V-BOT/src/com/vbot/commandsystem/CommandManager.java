@@ -4,6 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.vbot.commandsystem.commands.AnonymMessageCommand;
 import com.vbot.commandsystem.commands.HelpCommand;
+import com.vbot.commandsystem.commands.JokeCommand;
 import com.vbot.commandsystem.commands.RandomNameCommand;
 
 import net.dv8tion.jda.api.entities.Member;
@@ -23,6 +24,7 @@ public class CommandManager {
 		// Add commands to list
 		commands.put("help", new HelpCommand());
 		commands.put("randomname", new RandomNameCommand());
+		commands.put("joke", new JokeCommand());
 		commands.put("anonymmessage", new AnonymMessageCommand());
 		
 	}
