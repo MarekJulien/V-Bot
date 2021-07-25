@@ -2,6 +2,7 @@ package com.vbot.commandsystem;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.vbot.commandsystem.commands.AnonymMessageCommand;
 import com.vbot.commandsystem.commands.HelpCommand;
 import com.vbot.commandsystem.commands.RandomNameCommand;
 
@@ -22,6 +23,7 @@ public class CommandManager {
 		// Add commands to list
 		commands.put("help", new HelpCommand());
 		commands.put("randomname", new RandomNameCommand());
+		commands.put("anonymmessage", new AnonymMessageCommand());
 		
 	}
 	
@@ -36,6 +38,16 @@ public class CommandManager {
 		}
 		
 		return false;
+		
+	}
+	
+	// Extract arguments from message
+	public static String[] getCommandArgs(Message message) {
+		
+		String content = message.getContentDisplay();
+		String[] args = content.split(" ");
+		
+		return args;
 		
 	}
 	

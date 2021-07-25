@@ -14,6 +14,7 @@ public class HelpCommand implements Command{
 		
 		channel.sendMessage("__**Diese Commands kannst du verwenden:**__\n"
 				+ Constants.PREFIX + "**help**: Zeigt alle verfügbaren Befehle an\n"
+				+ Constants.PREFIX + "**anonymmessage [Nachricht]**: Sendet eine anonyme Nachricht\n"
 				+ Constants.PREFIX + "**randomname**: Gibt dir einen zufälligen Namen").queue();
 
 	}

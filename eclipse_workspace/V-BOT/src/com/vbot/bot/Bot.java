@@ -27,6 +27,11 @@ public class Bot {
 		
 		// Build bot
 		builder.build();
+		
+		// Print confirmation
+		System.out.println();
+		System.out.println("Bot online");
+		System.out.println();
 
 	}
 

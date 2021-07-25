@@ -4,7 +4,11 @@ import com.vbot.program.TokenManager;
 
 public class Constants {
 
-	final public static String TOKEN = TokenManager.getToken();
-	final public static String PREFIX = "$";
+	public static final String TOKEN = TokenManager.getToken();
+	public static final String PREFIX = "$";
+	
+	// Console Colors
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_GREEN = "\u001B[32m";
 	
 }

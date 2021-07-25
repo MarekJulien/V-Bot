@@ -39,20 +39,23 @@ public class MessageListener extends ListenerAdapter {
 			// Make sure message is not from a bot
 			if (!member.getUser().isBot()) {
 
+				// Extract command
+				String command = messageContent.split(" ")[0];
+				
 				// Make sure message starts with prefix
-				if (messageContent.startsWith(Constants.PREFIX)) {
+				if (command.startsWith(Constants.PREFIX)) {
 
 					// Extract command by removing prefix
-					String command = messageContent.substring(Constants.PREFIX.length());
+					command = command.substring(Constants.PREFIX.length());
 
 					// Make sure command is not null
 					if (command.length() > 0) {
-
+						
 						// Send error if Command does not exist
 						if (!cmdMan.perform(command, channel, member, message)) {
 
 							channel.sendMessage("Diesen Command kenne ich nicht, verwende " + Constants.PREFIX
-									+ "**help**, um dir alle verfügbaren Commandos anzegeigen zu lassen").queue();
+									+ "**help**, um dir alle verfügbaren Commands anzegeigen zu lassen").queue();
 
 						}
 
