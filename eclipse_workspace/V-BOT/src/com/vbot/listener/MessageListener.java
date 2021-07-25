@@ -1,12 +1,12 @@
 package com.vbot.listener;
 
-import com.vbot.listener.commandsystem.CommandManager;
+import com.vbot.commandsystem.CommandManager;
 import com.vbot.listener.constants.Constants;
 
 import net.dv8tion.jda.api.entities.ChannelType;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -31,13 +31,13 @@ public class MessageListener extends ListenerAdapter {
 
 			// Get event details
 			TextChannel channel = event.getTextChannel();
-			User user = event.getAuthor();
+			Member member = event.getMember();
 			Message message = event.getMessage();
-
+			
 			String messageContent = message.getContentDisplay();
 
 			// Make sure message is not from a bot
-			if (!user.isBot()) {
+			if (!member.getUser().isBot()) {
 
 				// Make sure message starts with prefix
 				if (messageContent.startsWith(Constants.PREFIX)) {
@@ -49,7 +49,7 @@ public class MessageListener extends ListenerAdapter {
 					if (command.length() > 0) {
 
 						// Send error if Command does not exist
-						if (!cmdMan.perform(command, channel, user, message)) {
+						if (!cmdMan.perform(command, channel, member, message)) {
 
 							channel.sendMessage("Diesen Command kenne ich nicht, verwende " + Constants.PREFIX
 									+ "**help**, um dir alle verfügbaren Commandos anzegeigen zu lassen").queue();

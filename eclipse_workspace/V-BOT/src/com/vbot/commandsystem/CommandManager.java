@@ -1,12 +1,13 @@
-package com.vbot.listener.commandsystem;
+package com.vbot.commandsystem;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.vbot.listener.commandsystem.commands.HelpCommand;
+import com.vbot.commandsystem.commands.HelpCommand;
+import com.vbot.commandsystem.commands.RandomNameCommand;
 
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.entities.User;
 
 public class CommandManager {
 
@@ -20,15 +21,16 @@ public class CommandManager {
 		
 		// Add commands to list
 		commands.put("help", new HelpCommand());
+		commands.put("randomname", new RandomNameCommand());
 		
 	}
 	
-	public boolean perform(String command, TextChannel channel, User user, Message message) {
+	public boolean perform(String command, TextChannel channel, Member member, Message message) {
 		
 		Command cmd = this.commands.get(command);
 		if(cmd != null) {
 			
-			cmd.performCommand(channel, user, message);
+			cmd.performCommand(channel, member, message);
 			return true;
 			
 		}
